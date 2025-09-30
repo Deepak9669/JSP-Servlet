@@ -10,7 +10,7 @@
 <div align ="center">
 
   <h1>User Form</h1>
-  <form action="GetForm.jsp" method="post"">
+  <form action="GetForm.jsp">
  
     <table>
       <tr>
