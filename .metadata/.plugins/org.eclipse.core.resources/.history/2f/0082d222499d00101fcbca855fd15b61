@@ -1,0 +1,29 @@
+package com.rays.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.catalina.connector.Response;
+
+ @WebServlet("/FirstServlet")//wild card mapping
+public class FirstServlet extends HttpServlet{
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse respsponse) 
+    		throws ServletException, IOException {
+    	System.out.println("<----in doGet method----->");
+    	respsponse.sendRedirect("FirstView.jsp");
+    	
+    	    }	
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+    		throws ServletException, IOException {
+System.out.println("<---- doPost method--------->");
+    }
+}
+

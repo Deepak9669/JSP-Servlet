@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div align ="center">
+
+  <h1>User Form</h1>
+  <form action="">
+ 
+    <table>
+      <tr>
+  
+     <th>First Name</th>
+    
+     <td>input type="text" name="firstName" values=""
+      placeHolder="enter First Name"</td>
+      </tr>
+      
+      <tr>
+       <th>Last Name</th>
+        <tb>input type ="text" name="lastName" values=""
+          placeholder="enter Last Name</tb>
+          </tr>
+             
+             <tr>
+              
+              <th>login</th>
+                <tb>input type="email" name="login" values=""
+                  placehilder="enter your email'</tb>
+             </tr>
+             
+              <tr>
+              <th>Password</th>
+              <tb>input type="Password" name "password"values=""
+               placeholder="enter your password"</tb>
+               
+               <tr>
+                 <th>DOB</th>
+                  <tb>input type="Date" name="dob" values=""</tb>
+              
+              </tr>
+             
+ </table>
+  </form>
+   </body>
+    </html>
+    </div>
