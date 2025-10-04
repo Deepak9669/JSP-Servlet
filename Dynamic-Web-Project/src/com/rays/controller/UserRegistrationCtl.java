@@ -49,7 +49,7 @@ public class UserRegistrationCtl extends HttpServlet {
 		
 		model.add(bean);
 		
-		request.setAttribute("sucessMsg", "User Registration Successfully");
+		request.setAttribute("sucessMsg", "User Registration Sucessfully");
 		
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());

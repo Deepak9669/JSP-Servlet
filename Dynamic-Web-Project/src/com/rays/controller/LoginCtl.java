@@ -21,6 +21,11 @@ public class LoginCtl extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
+	String login=request.getParameter("login");
+	String password=request.getParameter("password");
+	
+	System.out.println(login+ "\n" +password);
 
 	}
 

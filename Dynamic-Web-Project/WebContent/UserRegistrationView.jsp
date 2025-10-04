@@ -9,34 +9,29 @@
 <body>
 	<%@include file="Header.jsp"%>
 	<%
-	String sucessMsg =(String)request.getAttribute("sucessMsg");
-	String errorMsg=(String)request.getAttribute("errorMsg");
+		String sucessMsg = (String) request.getAttribute("sucessMsg");
+		String errorMsg = (String) request.getAttribute("errorMsg");
 	%>
 
 	<div align="center">
 
 		<h1>User Registration</h1>
-		<% 
-		if(sucessMsg!=null){
-		
-		%>
-		<h3 style ="color:green"><%= sucessMsg%></h3>
 		<%
-		}
+			if (sucessMsg != null) {
 		%>
-		
-			<% 
-		if(errorMsg!=null){
-		
-		%>
-		<h3 style ="color:red"><%= errorMsg%></h3>
+		<h3 style="color: green"><%=sucessMsg%></h3>
 		<%
-		}
+			}
 		%>
-		
-		
-		
-		
+
+		<%
+			if (errorMsg != null) {
+		%>
+		<h3 style="color: red"><%=errorMsg%></h3>
+		<%
+			}
+		%>
+
 		<form action="UserRegistrationCtl" method="post">
 			<table>
 				<tr>
