@@ -7,10 +7,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="Header.jsp"%>
+
+
+	<%
+		String errorMsg = (String) request.getAttribute("errorMsg");
+		String sucessMsg = (String) request.getAttribute("sucessMsg");
+	%>
+	<%@ include file="Header.jsp"%>
 
 	<div align="center">
 		<h1>Login view</h1>
+		
+		<%
+		if(errorMsg!=null){
+		
+		%>
+		<h2 style="color: red"><%=errorMsg%></h2>
+		<%
+		}
+		%>
+		
+		<%
+		
+		if(sucessMsg!=null){
+		
+		%>
+		<h2 style="color:green"><%=sucessMsg%></h2>
+		<%
+		}
+		%>
+		
 
 		<form action="LoginCtl" method="post">
 
@@ -32,7 +58,7 @@
 
 				<tr>
 					<th></th>
-					<td><input type="submit" name="operation" value="login"></td>
+					<td><input type="submit" name="operation" value="signin"></td>
 				</tr>
 
 			</table>
