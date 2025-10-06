@@ -1,0 +1,60 @@
+package com.rays.util;
+
+import java.beans.PropertyVetoException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+public final class JDBCDataSource {
+	
+	private static JDBCDataSource dataSource=null;
+	private static ComboPooledDataSource cpds=null;
+	
+	
+	private JDBCDataSource() {
+		
+	}
+	private static JDBCDataSource getInstance() {
+		
+		if(dataSource==null) {
+			
+			dataSource=new JDBCDataSource();
+			dataSource.cpds=new ComboPooledDataSource();
+			
+			ResourceBundle rb=ResourceBundle.getBundle("com.rays.bundle.app");
+			
+			try {
+				dataSource.cpds.setDriverClass(rb.getString("driver"));
+				dataSource.cpds.setJdbcUrl(rb.getString("url"));
+				dataSource.cpds.setUser(rb.getString("userName"));
+				dataSource.cpds.setPassword(rb.getString("password"));
+				dataSource.cpds.setAcquireIncrement(Integer.parseInt("AcquireIncrement"));
+				dataSource.cpds.setInitialPoolSize(Integer.parseInt("InitialPoolSize"));
+				dataSource.cpds.setMaxPoolSize(Integer.parseInt("maxPoolSize"));
+				dataSource.cpds.setMinPoolSize(Integer.parseInt("minPoolSize"));
+			} catch (PropertyVetoException e) {
+								e.printStackTrace();
+			}
+		}
+		
+		return dataSource;
+	}
+	 
+   public static  Connection getConnection() throws SQLException {
+	   return getInstance().cpds.getConnection();
+   }
+   public static void closeConnection(Connection conn) throws SQLException {
+	   if(conn!=null) {
+		   conn.close();
+	   }
+   }
+   public static void trnRollback(Connection conn) throws SQLException {
+	   if(conn!=null) {
+		   conn.rollback();
+	   }
+   }
+   
+
+}

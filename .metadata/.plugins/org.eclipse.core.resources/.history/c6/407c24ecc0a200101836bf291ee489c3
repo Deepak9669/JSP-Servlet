@@ -1,0 +1,42 @@
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+List list = (list)request.getAttribute("list");
+%>
+	<div align="center">
+		<form action="UserListCtl" method="post">
+		
+		<table>
+		<tr>
+		<th>id</th>
+		<th>firstName</th>
+		<th>lastName</th>
+		<th>login</th>
+		<th>DOB</th>
+		
+		</tr>
+		
+		<tr>
+		<td>1</td>
+		<td>rohit</td>
+		<td>sharma</td>
+		<td>rohit@gmail.com</td>
+		<td>2002-01-06</td>
+		
+		</tr>
+		
+		
+		</table>
+		
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+Oct 03, 2025 11:58:14.19 NEW SESSION
+Oct 03, 2025 11:58:14.19 [11132:25776:1003/115814.142:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 03, 2025 11:58:14.67 Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 03, 2025 11:58:43.75 [11132:25776:1003/115843.751:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 03, 2025 11:59:31.82 [11132:25776:1003/115931.829:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 03, 2025 12:00:55.32 [11132:25776:1003/120055.324:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 03, 2025 12:03:49.65 [11132:25776:1003/120349.651:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 03, 2025 12:09:18.34 [11132:25776:1003/120918.340:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+
+Oct 04, 2025 12:55:20.23 NEW SESSION
+Oct 04, 2025 12:55:20.23 [5500:14292:1004/125520.232:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 04, 2025 12:55:20.37 Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 04, 2025 12:55:41.99 [5500:14292:1004/125541.987:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 04, 2025 12:56:39.29 [5500:14292:1004/125639.296:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 04, 2025 12:58:18.10 [5500:14292:1004/125818.106:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 04, 2025 13:01:06.41 [5500:14292:1004/130106.411:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 04, 2025 13:07:19.22 [5500:14292:1004/130719.229:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
+Oct 04, 2025 14:00:48.03 [5500:14292:1004/140048.030:ERROR:google_apis\gcm\engine\connection_factory_impl.cc:483] ConnectionHandler failed with net error: -2
+Oct 04, 2025 19:27:39.10 [5500:3352:1004/192739.106:ERROR:components\sync\engine\get_updates_processor.cc:267] PostClientToServerMessage() failed during GetUpdates with error Network error (ERR_INTERNET_DISCONNECTED)
+Oct 04, 2025 19:27:42.88 [5500:5840:1004/192742.883:ERROR:components\device_event_log\device_event_log_impl.cc:198] [19:27:42.881] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+Oct 04, 2025 19:27:42.91 [5500:5840:1004/192742.911:ERROR:components\device_event_log\device_event_log_impl.cc:198] [19:27:42.913] USB: usb_service_win.cc:308 SetupDiEnumDeviceInterfaces: No more data is available. (0x103)
+Oct 04, 2025 19:28:03.78 [5500:5840:1004/192803.781:ERROR:components\device_event_log\device_event_log_impl.cc:198] [19:28:03.781] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)

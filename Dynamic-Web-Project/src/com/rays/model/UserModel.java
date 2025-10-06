@@ -231,50 +231,40 @@ public class UserModel {
 	     }
 	     
 //	    /*<------------by search -------------->/*
-	     public List search(UserBean bean) throws SQLException {
-	    	 
-	    	 List list = new ArrayList();
-	    	 
-	    	 StringBuffer sql=new StringBuffer("select * from where 1=1");
-	    	 
-	    	 if(bean!=null) {
-	    		 
-	    		 if(bean.getFirstName()!=null && bean.getFirstName().length()>0) {
-	    			 sql.append(" and firstName like '"+bean.getFirstName()+"%'");
-	    		 }
-	    		 if(bean.getLastName()!=null && bean.getLastName().length()>0) {
-	    			 sql.append(" and lastNane like '"+bean.getLastName()+"%'");
-	    		 }
-	    		 if(bean.getLogin()!=null && bean.getLogin().length()>0) {
-	    			 sql.append(" and login like '"+bean.getLogin()+"%'");
-	    		 }
-	    		 if(bean.getPassword()!=null && bean.getPassword().length()>0) {
-	    			 sql.append(" and password like '"+bean.getPassword()+"%'" );
-	    		 }
-	    		 if(bean.getId()>0 && bean.getId()<nextPk()) {
-	    			 sql.append(" and id like '"+bean.getId()+"%'");
-	    		 }
-	    		 if(bean.getDob()!=null) {
-	    			 sql.append(" and dob like '"+new java.sql.Date(bean.getDob().getTime())+"%'");
-	    		 }
-	    		 
-	    	 }
-	    	 Connection conn=JDBCDataSource.getConnection();
-	    	 
-	    	 PreparedStatement pstmt=conn.prepareStatement(sql.toString());
-	    	 
-	    	 ResultSet rs = pstmt.executeQuery();
-	    	 
-	    	 while(rs.next()) {
-	    		 bean=new UserBean();
-	    		 
-	    		 bean.setId(rs.getInt(1));
-	    		 bean.setFirstName(rs.getString(2));
-	    		 bean.setLastName(rs.getString(3));
-	    		 bean.setLogin(rs.getString(4));
-	    		 bean.setPassword(rs.getString(5));
-	    		 bean.setDob(rs.getDate(6));
-	    	 }
-	    	 return list;
-	     }
-}
+	     public List search(UserBean bean) throws Exception {
+
+	 		List list = new ArrayList();
+
+	 		StringBuffer sql = new StringBuffer("select * from st_user where 1 = 1");
+
+	 		if (bean != null) {
+	 			if (bean.getFirstName() != null && bean.getFirstName().length() > 0) {
+	 				sql.append(" and firstName like '" + bean.getFirstName() + "%'");
+	 			}
+	 			if (bean.getLastName() != null && bean.getLastName().length() > 0) {
+	 				sql.append(" and lastName like '" + bean.getLastName() + "%'");
+	 			}
+	 		}
+
+	 		Connection conn = JDBCDataSource.getConnection();
+	 		System.out.println("sql ----> " + sql.toString());
+	 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+	 		ResultSet rs = pstmt.executeQuery();
+
+	 		while (rs.next()) {
+	 			bean = new UserBean();
+	 			bean.setId(rs.getInt(1));
+	 			bean.setFirstName(rs.getString(2));
+	 			bean.setLastName(rs.getString(3));
+	 			bean.setLogin(rs.getString(4));
+	 			bean.setPassword(rs.getString(5));
+	 			bean.setDob(rs.getDate(6));
+	 			list.add(bean);
+
+	 		}
+
+	 		return list;
+
+	 	}
+
+	 }
