@@ -26,7 +26,6 @@ public class UserListCtl extends HttpServlet {
 			List list = model.search(bean);
 			request.setAttribute("list", list);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

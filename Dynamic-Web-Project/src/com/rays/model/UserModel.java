@@ -170,36 +170,25 @@ public class UserModel {
 	     }
 //	     /*<-------------change password--------------->/*
 	     
-	     public void changePssword(String oldPassword,String newPassword,String login) throws Exception {
-	    	 
-	    	 UserBean existBean=findByLogin(login);
-	    	 
-	    	 if(existBean==null) {
-	    	 
-	    	 throw new RecordNotFoundException("login id already exists");
-	    	 } 
-	    	 
-	    	 System.out.println("database password :"+ existBean.getPassword());
-	    	 System.out.println("old paassword :"+oldPassword);
-	    	 
-	    	 if(existBean.getPassword().equals(oldPassword)) {
-	    	 
-	    	 Connection conn=JDBCDataSource.getConnection();
-	    	 
-	    	 PreparedStatement pstmt=conn.prepareStatement("update st_user set password=? where login=?");
-	    	 
-	    	 pstmt.setString(1, newPassword);
-	    	 pstmt.setString(2, oldPassword);
-	    	 
-	    	 int i = pstmt.executeUpdate();
-	    	 
-	    	 System.out.println("password changed sucessfully :"+ i);
-	    	 
-	    	 conn.close();
-	    	 } else {
-	    		 throw new Exception("old password is incorrect");
-	    	 }
-	     }
+	     public void changePassword(String login, String password, String newPassword) throws Exception {
+
+	 		UserBean bean = authenticate(login, password);
+
+	 		if (bean != null) {
+
+	 			Connection conn = JDBCDataSource.getConnection();
+	 			PreparedStatement pstmt = conn.prepareStatement("update st_user set password = ? where id =?");
+
+	 			pstmt.setString(1, newPassword);
+	 			pstmt.setInt(2, bean.getId());
+	 			pstmt.executeUpdate();
+
+	 			System.out.println("Password changed successfully");
+	 		} else {
+	 			throw new RuntimeException("Wrong Username or Password");
+	 		}
+
+	 	}
 //	     /*<-----------find by id --------------->/*
 
 	     public UserBean findById(int id) throws SQLException {
