@@ -1,6 +1,7 @@
 package com.rays.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -37,6 +38,39 @@ public class UserListCtl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String op = request.getParameter("operation");
+		UserModel model = new UserModel();
+		UserBean bean=new UserBean();
+		String[] ids = request.getParameterValues("ids");
+
+		if (op.equals("delete")) {
+			if (ids != null && ids.length > 0) {
+
+				for (String id : ids) {
+					try {
+						model.delete(Integer.parseInt(id));
+						request.setAttribute("successMsg", "record deleted sucessfully");
+					} catch (Exception e) {
+
+						e.printStackTrace();
+					}
+				}
+			} else {
+				request.setAttribute("errorMsg", "plz select at least one id");
+
+			}
+		}
+		try {
+			List list = model.search(bean);
+			request.setAttribute("list", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		RequestDispatcher rd = request.getRequestDispatcher("UserListView.jsp");
+		rd.forward(request, response);
+
 	}
 
-}
+
+	}

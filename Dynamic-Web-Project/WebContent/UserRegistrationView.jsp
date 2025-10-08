@@ -9,7 +9,7 @@
 <body>
 	<%@include file="Header.jsp"%>
 	<%
-		String sucessMsg = (String) request.getAttribute("sucessMsg");
+		String successMsg = (String) request.getAttribute("successMsg");
 		String errorMsg = (String) request.getAttribute("errorMsg");
 	%>
 
@@ -17,9 +17,9 @@
 
 		<h1>User Registration</h1>
 		<%
-			if (sucessMsg != null) {
+			if (successMsg != null) {
 		%>
-		<h3 style="color: green"><%=sucessMsg%></h3>
+		<h3 style="color: green"><%=successMsg%></h3>
 		<%
 			}
 		%>

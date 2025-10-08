@@ -67,13 +67,13 @@ public class UserModel {
 		}
 //	/*<------------Delete a record------------------>/*
 	 
-	public void delete(UserBean bean) throws SQLException {
+	public void delete(int id) throws SQLException {
 		
 		Connection conn= JDBCDataSource.getConnection();
 		
 		PreparedStatement pstmt=conn.prepareStatement("delete from st_user where id=?");
 		
-		pstmt.setInt(1, bean.getId());
+		pstmt.setInt(1,id);
 		
 		int i =pstmt.executeUpdate();
 		
@@ -224,7 +224,7 @@ public class UserModel {
 
 	 		List list = new ArrayList();
 
-	 		StringBuffer sql = new StringBuffer("select * from st_user where 1 = 1");
+	 		StringBuffer sql = new StringBuffer("select * from st_user limit 0,10");
 
 	 		if (bean != null) {
 	 			if (bean.getFirstName() != null && bean.getFirstName().length() > 0) {

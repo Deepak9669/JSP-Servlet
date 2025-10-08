@@ -12,18 +12,37 @@
 
 	<%
 		List list = (List) request.getAttribute("list");
+		String errorMsg = (String) request.getAttribute("errorMsg");
+		String successMsg = (String) request.getAttribute("successMsg");
 	%>
 
 	<%@ include file="Header.jsp"%>
 	<div align="center">
 
 		<h3>User List</h3>
+		<%
+			if (errorMsg != null) {
+		%>
+		<h2 style="color: red"><%=errorMsg%></h2>
+		<%
+			}
+		%>
+
+		<%
+			if (successMsg != null) {
+		%>
+		<h2 style="color: green"><%=successMsg%></h2>
+		<%
+			}
+		%>
+
 
 		<form action="UserListCtl" method="post">
 
 			<table border="1px" width="100%">
 
 				<tr style="background-color: skyblue">
+					<th>Delete</th>
 					<th>Id</th>
 					<th>First Name</th>
 					<th>Last Name</th>
@@ -32,7 +51,7 @@
 				</tr>
 
 				<%
-					Iterator<UserBean> it=list.iterator();
+					Iterator<UserBean> it = list.iterator();
 				%>
 
 				<%
@@ -40,6 +59,7 @@
 						UserBean bean = it.next();
 				%>
 				<tr align="center" style="background-color: #D3D3D3">
+					<td><input type="checkbox" value=<%=bean.getId()%> name="ids"></td>
 					<td><%=bean.getId()%></td>
 					<td><%=bean.getFirstName()%></td>
 					<td><%=bean.getLastName()%></td>
@@ -53,9 +73,17 @@
 
 
 			</table>
+			<table>
+				<tr>
+					<th></th>
+					<td><input type="submit" name="operation" value="delete"></td>
+				</tr>
+
+			</table>
 
 		</form>
 	</div>
-	<%@ include file="Footer.jsp"%>
+	<%@include file="Footer.jsp"%>
+
 </body>
 </html>

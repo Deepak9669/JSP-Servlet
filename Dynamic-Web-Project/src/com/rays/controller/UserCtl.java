@@ -48,7 +48,7 @@ public class UserCtl extends HttpServlet {
 		
 		model.add(bean);
 		
-		request.setAttribute("sucessMsg", "User added sucesssfully");
+		request.setAttribute("successMsg", "User added sucesssfully");
 		
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());
