@@ -28,7 +28,7 @@
 	<%
 		if (user != null) {
 	%>
-	<a href="UserListCtl">User List</a> |
+	<a href="UserListCtl">User List</a>|
 	<a href="UserCtl">Add User</a> |
 	<a href="ChangePasswordCtl">Change password</a> |
 	<a href="LoginCtl?operation=logout">Logout</a>
