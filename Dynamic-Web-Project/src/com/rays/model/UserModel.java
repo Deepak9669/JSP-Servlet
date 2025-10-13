@@ -222,6 +222,24 @@ public class UserModel {
 			if (bean.getLastName() != null && bean.getLastName().length() > 0) {
 				sql.append(" and lastName like '" + bean.getLastName() + "%'");
 			}
+    		if(bean.getLogin() != null && bean.getLogin().length()>0) {
+    			sql.append(" and login like '"+ bean.getLogin()+"%'");
+    			
+    		}
+    		if(bean.getPassword() != null && bean.getPassword().length()>0) {
+    			sql.append(" and password like '"+ bean.getPassword() +"%'");
+    			
+    		}
+    		if(bean.getId()>0 && bean.getId()<nextPk()) {
+    			sql.append(" and id like '"+ bean.getId()+"%'");
+    			
+    		}
+    		if(bean.getDob()!=null) {
+    			sql.append(" and dob like '"+ new java.sql.Date(bean.getDob().getTime())+"' ");
+    					    		
+		}
+
+			
 		}
 
 		Connection conn = JDBCDataSource.getConnection();

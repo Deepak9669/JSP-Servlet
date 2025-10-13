@@ -11,7 +11,7 @@
 
 	<%
 		String errorMsg = (String) request.getAttribute("errorMsg");
-		String sucessMsg = (String) request.getAttribute("sucessMsg");
+		String successMsg = (String) request.getAttribute("successMsg");
 	%>
 	<%@ include file="Header.jsp"%>
 
@@ -29,10 +29,10 @@
 		
 		<%
 		
-		if(sucessMsg!=null){
+		if(successMsg!=null){
 		
 		%>
-		<h2 style="color:green"><%=sucessMsg%></h2>
+		<h2 style="color:green"><%=successMsg%></h2>
 		<%
 		}
 		%>

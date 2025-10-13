@@ -1,0 +1,259 @@
+package com.rays.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.catalina.tribes.transport.RxTaskPool;
+
+import com.mysql.cj.jdbc.PreparedStatementWrapper;
+import com.rays.bean.UserBean;
+import com.rays.exception.RecordNotFoundException;
+import com.rays.util.JDBCDataSource;
+
+public class UserModel {
+	
+//	/*<---------Generate next primary key-------------->/*
+	public int nextPk() throws SQLException {
+		int pk=0;
+		
+		Connection conn=JDBCDataSource.getConnection();
+		
+        PreparedStatement pstmt	=  conn.prepareStatement("select max(id) from st_user"); 
+        
+        ResultSet rs =pstmt.executeQuery();
+        
+        while(rs.next()){
+        	pk=rs.getInt(1);
+        System.out.println("max id :"+pk);	
+        }
+        conn.close();
+        return pk+1;
+		
+	}
+	
+//	/*<------------------Insert a record----------------->/*
+	
+	public void add(UserBean bean) throws RecordNotFoundException, SQLException {
+		
+		UserBean existBean = findByLogin(bean.getLogin());
+		
+		if(existBean!=null) {
+			throw new RecordNotFoundException("login id is all ready exist");
+		}
+		Connection conn = JDBCDataSource.getConnection();
+		
+		PreparedStatement pstmt=conn.prepareStatement("insert into st_user values(?,?,?,?,?,?)");
+		
+				
+		int pk=nextPk();
+		
+        pstmt.setInt(1, pk);
+        pstmt.setString(2, bean.getFirstName());
+        pstmt.setString(3, bean.getLastName());
+        pstmt.setString(4, bean.getLogin());
+        pstmt.setString(5, bean.getPassword());
+        pstmt.setDate(6, new java.sql.Date(bean.getDob().getTime()));  
+        
+        int i = pstmt.executeUpdate();
+        
+        System.out.println("data insert sucessfully :"+i);
+        
+        conn.close();
+
+		}
+//	/*<------------Delete a record------------------>/*
+	 
+	public void delete(UserBean bean) throws SQLException {
+		
+		Connection conn= JDBCDataSource.getConnection();
+		
+		PreparedStatement pstmt=conn.prepareStatement("delete from st_user where id=?");
+		
+		pstmt.setInt(1, bean.getId());
+		
+		int i =pstmt.executeUpdate();
+		
+		System.out.println("data delete sucessfully :"+i);
+		
+		conn.close();
+		
+	}
+//	*/<----------------------Update a record----------------->/*
+	
+	     public void update(UserBean bean) throws SQLException {
+	    	 
+	    	 
+	    	 Connection conn= JDBCDataSource.getConnection();
+	    	 
+	    	 PreparedStatement pstmt=conn.prepareStatement(
+	    			 "update st_user set firstName=?,lastName=?,login=?password=?,dob=? where id=?");
+	    	 
+	    	 pstmt.setString(1, bean.getFirstName());
+	    	 pstmt.setString(2,bean.getLastName());
+	    	 pstmt.setString(3,bean.getLogin());
+	    	 pstmt.setString(4, bean.getPassword());
+	    	 pstmt.setDate(4, new java.sql.Date(bean.getDob().getTime()));
+	    	 pstmt.setInt(6, bean.getId());
+	    	 
+	    	 int i= pstmt.executeUpdate();
+	    	 
+	    	 System.out.println("data update sucessfully :"+i);
+	    	 
+	    	 conn.close();
+	    	 
+	    	 
+	     }
+//	     <---------------find by login----------------->
+	     
+	     public UserBean findByLogin(String login) throws SQLException {
+	    	 
+	    	 Connection conn=JDBCDataSource.getConnection();
+	    	 
+	    	 PreparedStatement pstmt= conn.prepareStatement("select * from st_user where login=?");
+	    	 
+	    	 pstmt.setString(1, login);
+	    	 
+	    	 ResultSet rs=pstmt.executeQuery();
+	    	 
+	    	 UserBean bean=null;
+	    	 
+	    	 while(rs.next()) {
+	    		 bean=new UserBean();
+	    		 
+	    		 bean.setId(rs.getInt(1));
+	    		 bean.setFirstName(rs.getString(2));
+	    		 bean.setLastName(rs.getString(3));
+	    		 bean.setLogin(rs.getString(4));
+	    		 bean.setPassword(rs.getString(5));
+	    		 bean.setDob(rs.getDate(6));
+	    	 
+	     }
+	    	 conn.close();
+	    	 return bean;
+	     
+	}
+	//     <---------------authenticate user------------------>
+	     
+	     public UserBean authenticate(String login , String password) throws SQLException {
+	    	 
+	    	 Connection conn=JDBCDataSource.getConnection();
+	    	 
+	    	 PreparedStatement pstmt=conn.prepareStatement("select * from st_user where login=? and password=?");
+	    	 
+	    	 pstmt.setString(1,login);
+	    	 pstmt.setString(2, password);
+	    	 
+	    	 ResultSet rs = pstmt.executeQuery();
+	    	 
+	    	 UserBean bean = null;
+	    	 
+	    	 while(rs.next()) {
+	    		 bean= new UserBean();
+	    		 
+	    		 bean.setId(rs.getInt(1));
+	    		 bean.setFirstName(rs.getString(2));
+	    		 bean.setLastName(rs.getString(3));
+	    		 bean.setLogin(rs.getString(4));
+	    		 bean.setPassword(rs.getString(5));
+	    		 bean.setDob(rs.getDate(6));
+	    	 
+
+	    	 }
+	    	 conn.close();
+	    	 return bean;
+	    	 
+	    	 
+	     }
+//	     /*<-------------change password--------------->/*
+	     
+	     public void changePassword(String login, String password, String newPassword) throws Exception {
+
+	 		UserBean bean = authenticate(login, password);
+
+	 		if (bean != null) {
+
+	 			Connection conn = JDBCDataSource.getConnection();
+	 			PreparedStatement pstmt = conn.prepareStatement("update st_user set password = ? where id =?");
+
+	 			pstmt.setString(1, newPassword);
+	 			pstmt.setInt(2, bean.getId());
+	 			pstmt.executeUpdate();
+
+	 			System.out.println("Password changed successfully");
+	 		} else {
+	 			throw new RuntimeException("Wrong Username or Password");
+	 		}
+
+	 	}
+//	     /*<-----------find by id --------------->/*
+
+	     public UserBean findById(int id) throws SQLException {
+	    	 
+	    	 Connection conn = JDBCDataSource.getConnection();
+	    	 
+	    	 PreparedStatement pstmt = conn.prepareStatement("select * from st_user where id=?");
+	    	 
+	    	 pstmt.setInt(1, id);
+	    	 
+	    	 ResultSet rs  =  pstmt.executeQuery();
+	    	 
+	    	 UserBean bean = null;
+	    	 
+	    	 while(rs.next()) {
+	    		 bean=new UserBean();
+	    		 
+	    		 bean.setId(rs.getInt(1));	
+	    		 bean.setFirstName(rs.getString(2));
+	    		 bean.setLastName(rs.getString(3));
+	    		 bean.setLogin(rs.getString(4));
+	    		 bean.setPassword(rs.getString(5));
+	    		 bean.setDob(rs.getDate(6));
+	    		 
+	    	 }
+	    	 conn.close();
+	    	 return bean;
+	    	 
+	     }
+	     
+//	    /*<------------by search -------------->/*
+	     public List search(UserBean bean) throws Exception {
+
+	 		List list = new ArrayList();
+
+	 		StringBuffer sql = new StringBuffer("select * from st_user where 1 = 1");
+
+	 		if (bean != null) {
+	 			if (bean.getFirstName() != null && bean.getFirstName().length() > 0) {
+	 				sql.append(" and firstName like '" + bean.getFirstName() + "%'");
+	 			}
+	 			if (bean.getLastName() != null && bean.getLastName().length() > 0) {
+	 				sql.append(" and lastName like '" + bean.getLastName() + "%'");
+	 			}
+	 		}
+
+	 		Connection conn = JDBCDataSource.getConnection();
+	 		System.out.println("sql ----> " + sql.toString());
+	 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+	 		ResultSet rs = pstmt.executeQuery();
+
+	 		while (rs.next()) {
+	 			bean = new UserBean();
+	 			bean.setId(rs.getInt(1));
+	 			bean.setFirstName(rs.getString(2));
+	 			bean.setLastName(rs.getString(3));
+	 			bean.setLogin(rs.getString(4));
+	 			bean.setPassword(rs.getString(5));
+	 			bean.setDob(rs.getDate(6));
+	 			list.add(bean);
+
+	 		}
+
+	 		return list;
+
+	 	}
+
+	 }

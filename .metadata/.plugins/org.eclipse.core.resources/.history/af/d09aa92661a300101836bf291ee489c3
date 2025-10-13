@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<%@ include file="Header.jsp"%>
+	<div align="center">
+		<h1>Change password</h1>
+		<form action="ChangePasswordCtl" method="post"></form>
+		<table>
+		<tr>
+		<th>Old Password</th>
+		<td><input type="Password"name="oldPassword"value=""
+		 placeHolder="enter your OldPassword"></td>
+		
+		</tr>
+		<tr>
+		<th>New Password</th>
+		<td><input type="Password"name="newPassword"value=""
+		 placeHolder="enter your NewPassword"></td>
+		
+		</tr>
+		<tr>
+		<th>Confirm Password</th>
+		<td><input type="Password" name="ConfirmPassword"value=""
+		 placeHolder="enter your Confirm Password"></td>
+		
+		</tr>
+		<tr>
+		<th></th>
+		<td><input type="submit" name="operation" value="ChangePassword"></td>
+		</tr>
+		
+		
+		</table>
+
+	</div>
+		<%@ include file="Footer.jsp"%>
+</body>
+</html>

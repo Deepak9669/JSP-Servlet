@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		String errorMsg = (String) request.getAttribute("errorMsg");
+		String successMsg = (String) request.getAttribute("successMsg");
+	%>
+
+
+	<%@ include file="Header.jsp"%>
+	<div align="center">
+
+		<h2 align="center">Change password</h2>
+
+		<%
+			if (errorMsg != null) {
+		%>
+		<h2 style="color: red"><%=errorMsg%></h2>
+		<%
+			}
+		%>
+
+		<%
+			if (successMsg != null) {
+		%>
+		<h2 style="color: green"><%=successMsg%></h2>
+		<%
+			}
+		%>
+
+		<form action="ChangePasswordCtl" method="post">
+		<table>
+			<tr>
+				<th>Old Password</th>
+				<td><input type="Password" name="oldPassword" value=""
+					placeHolder="enter your OldPassword"></td>
+
+			</tr>
+			<tr>
+				<th>New Password</th>
+				<td><input type="Password" name="newPassword" value=""
+					placeHolder="enter your NewPassword"></td>
+
+			</tr>
+			<tr>
+				<th>Confirm Password</th>
+				<td><input type="Password" name="ConformPassword" value=""
+					placeHolder="enter your Confirm Password"></td>
+
+			</tr>
+			<tr>
+				<th></th>
+				<td><input type="submit" name="operation"
+					value="ChangePassword"></td>
+			</tr>
+
+
+		</table>
+</form>
+
+	</div>
+	<%@ include file="Footer.jsp"%>
+</body>
+</html>

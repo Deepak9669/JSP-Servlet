@@ -2,6 +2,7 @@ package com.rays.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -42,6 +43,8 @@ public class UserListCtl extends HttpServlet {
 		UserModel model = new UserModel();
 		UserBean bean=new UserBean();
 		String[] ids = request.getParameterValues("ids");
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 
 		if (op.equals("delete")) {
 			if (ids != null && ids.length > 0) {
@@ -65,6 +68,7 @@ public class UserListCtl extends HttpServlet {
 			bean.setLastName(request.getParameter("lastName"));
 			bean.setLogin(request.getParameter("login"));
 			bean.setPassword(request.getParameter("password"));
+			
 		}
 		try {
 			List list = model.search(bean);

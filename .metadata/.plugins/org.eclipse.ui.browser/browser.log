@@ -21,3 +21,17 @@ Oct 04, 2025 19:27:39.10 [5500:3352:1004/192739.106:ERROR:components\sync\engine
 Oct 04, 2025 19:27:42.88 [5500:5840:1004/192742.883:ERROR:components\device_event_log\device_event_log_impl.cc:198] [19:27:42.881] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
 Oct 04, 2025 19:27:42.91 [5500:5840:1004/192742.911:ERROR:components\device_event_log\device_event_log_impl.cc:198] [19:27:42.913] USB: usb_service_win.cc:308 SetupDiEnumDeviceInterfaces: No more data is available. (0x103)
 Oct 04, 2025 19:28:03.78 [5500:5840:1004/192803.781:ERROR:components\device_event_log\device_event_log_impl.cc:198] [19:28:03.781] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+
+Oct 10, 2025 13:52:39.36 NEW SESSION
+Oct 10, 2025 13:52:39.36 [11860:13584:1010/135239.357:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Oct 10, 2025 13:52:39.36 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+Oct 12, 2025 17:47:34.20 NEW SESSION
+Oct 12, 2025 17:47:34.20 [18428:2880:1012/174734.205:ERROR:google_apis\gcm\engine\registration_request.cc:274] Registration URL fetching failed.
+Oct 12, 2025 17:47:35.30 Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 12, 2025 17:47:59.89 [18428:2880:1012/174759.893:ERROR:google_apis\gcm\engine\registration_request.cc:274] Registration URL fetching failed.
+Oct 12, 2025 17:48:04.54 [18428:16600:1012/174804.544:ERROR:components\signin\internal\identity_manager\account_info_fetcher.cc:65] OnGetTokenFailure: Connection failed (-106).
+Oct 12, 2025 17:48:40.30 [18428:2880:1012/174840.305:ERROR:google_apis\gcm\engine\registration_request.cc:274] Registration URL fetching failed.
+Oct 12, 2025 17:50:05.76 [18428:2880:1012/175005.767:ERROR:google_apis\gcm\engine\registration_request.cc:274] Registration URL fetching failed.
+Oct 12, 2025 17:53:13.60 [18428:2880:1012/175313.603:ERROR:google_apis\gcm\engine\registration_request.cc:274] Registration URL fetching failed.
+Oct 12, 2025 19:59:06.51 [18428:2880:1012/195906.518:ERROR:google_apis\gcm\engine\registration_request.cc:274] Registration URL fetching failed.

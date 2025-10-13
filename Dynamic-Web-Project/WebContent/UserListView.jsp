@@ -58,14 +58,9 @@
 						placeholder="search by login"></td>
 					<td><input type="submit" name="operation" value="search"></td>
 				</tr>
-				<tr>
-					<th>Password</th>
-					<td><input type="password" name="password" value=""
-						placeholder="search by password"></td>
-					<td><input type="submit" name="operation" value="search"></td>
-				</tr>
-				
-				
+
+
+
 
 			</table>
 

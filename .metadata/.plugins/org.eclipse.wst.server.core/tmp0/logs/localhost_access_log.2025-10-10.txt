@@ -1,0 +1,10 @@
+127.0.0.1 - - [10/Oct/2025:08:05:56 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [10/Oct/2025:08:05:57 +0530] "GET /Dynamic-Web-Project/ HTTP/1.1" 200 417
+0:0:0:0:0:0:0:1 - - [10/Oct/2025:08:06:01 +0530] "GET /Dynamic-Web-Project/UserRegistrationView.jsp HTTP/1.1" 200 1734
+0:0:0:0:0:0:0:1 - - [10/Oct/2025:08:06:03 +0530] "GET /Dynamic-Web-Project/LoginCtl HTTP/1.1" 200 1318
+0:0:0:0:0:0:0:1 - - [10/Oct/2025:08:06:14 +0530] "POST /Dynamic-Web-Project/LoginCtl HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Oct/2025:08:06:14 +0530] "GET /Dynamic-Web-Project/WelcomeCtl HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Oct/2025:08:06:14 +0530] "GET /Dynamic-Web-Project/Welcome.jsp HTTP/1.1" 200 931
+0:0:0:0:0:0:0:1 - - [10/Oct/2025:08:06:30 +0530] "GET /Dynamic-Web-Project/LoginCtl?operation=logout HTTP/1.1" 200 1379
+0:0:0:0:0:0:0:1 - - [10/Oct/2025:08:06:44 +0530] "POST /Dynamic-Web-Project/LoginCtl HTTP/1.1" 200 1379
+0:0:0:0:0:0:0:1 - - [10/Oct/2025:08:06:47 +0530] "GET /Dynamic-Web-Project/LoginCtl HTTP/1.1" 200 1318
