@@ -1,1 +1,106 @@
-.metadata/.plugins/org.eclipse.core.resources/.history/16/407376550ea800101633d02aaf2224a9
+# ========================================
+# Java + Eclipse + Maven/Gradle .gitignore
+# ========================================
+
+# --- Java compiled files ---
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# --- Log files ---
+*.log
+
+# --- BlueJ files ---
+*.ctxt
+
+# --- Mobile Tools for Java (J2ME) ---
+.mtj.tmp/
+
+# --- Package Files ---
+*.exe
+*.dll
+*.so
+*.dmg
+*.pkg
+*.deb
+
+# --- IDE specific: Eclipse ---
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.project
+.classpath
+.recommenders/
+
+# Eclipse Core
+.DS_Store
+Thumbs.db
+
+# --- Eclipse Working Sets / Tasks ---
+.task-tags
+.project
+.settings/
+.buildpath
+
+# --- Maven ---
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+!/.mvn/wrapper/maven-wrapper.properties
+
+# --- Gradle ---
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+gradle-app.setting
+.gradle/
+out/
+
+# --- STS (Spring Tool Suite) ---
+.apt_generated/
+.springBeans/
+.sts4-cache/
+
+# --- IntelliJ IDEA (optional, if you open in IntelliJ) ---
+*.iml
+.idea/
+out/
+
+# --- NetBeans (optional, if opened there) ---
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# --- VS Code ---
+.vscode/
+
+# --- Other OS generated files ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Java specific ---
+hs_err_pid*
+replay_pid*

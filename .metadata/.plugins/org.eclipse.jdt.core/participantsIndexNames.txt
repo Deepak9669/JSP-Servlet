@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-C:\WorkSpace\jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2243176100.index
-\Dynamic-Web-Project\src
-C:\WorkSpace\jsp-servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2599130778.index
-\Dynamic-Web-Project\src

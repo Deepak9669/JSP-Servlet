@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move element &apos;Footer.jsp&apos; to &apos;com.rays.model.UserModel.java&apos;&#x0D;&#x0A;- Original project: &apos;Dynamic-Web-Project&apos;&#x0D;&#x0A;- Destination element: &apos;com.rays.model.UserModel.java&apos;&#x0D;&#x0A;- Original element: &apos;Footer.jsp&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="/src&lt;com.rays.model{UserModel.java" element1="WebContent/Footer.jsp" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1759486997345" units="0" version="1.0"/>
-</session>
