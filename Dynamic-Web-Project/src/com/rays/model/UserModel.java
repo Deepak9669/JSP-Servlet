@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.rays.bean.UserBean;
@@ -68,7 +69,7 @@ public class UserModel {
 
 		PreparedStatement pstmt = conn.prepareStatement("delete from st_user where id = ?");
 
-		pstmt.setInt(1,id);
+		pstmt.setInt(1, id);
 
 		int i = pstmt.executeUpdate();
 		System.out.println("data deleted successfully: " + i);
@@ -209,7 +210,7 @@ public class UserModel {
 
 	}
 
-	public List search(UserBean bean) throws Exception {
+	public List search(UserBean bean, int pageNo, int pageSize) throws Exception {
 
 		List list = new ArrayList();
 
@@ -222,24 +223,29 @@ public class UserModel {
 			if (bean.getLastName() != null && bean.getLastName().length() > 0) {
 				sql.append(" and lastName like '" + bean.getLastName() + "%'");
 			}
-    		if(bean.getLogin() != null && bean.getLogin().length()>0) {
-    			sql.append(" and login like '"+ bean.getLogin()+"%'");
-    			
-    		}
-    		if(bean.getPassword() != null && bean.getPassword().length()>0) {
-    			sql.append(" and password like '"+ bean.getPassword() +"%'");
-    			
-    		}
-    		if(bean.getId()>0 && bean.getId()<nextPk()) {
-    			sql.append(" and id like '"+ bean.getId()+"%'");
-    			
-    		}
-    		if(bean.getDob()!=null) {
-    			sql.append(" and dob like '"+ new java.sql.Date(bean.getDob().getTime())+"' ");
-    					    		
-		}
+			if (bean.getLogin() != null && bean.getLogin().length() > 0) {
+				sql.append(" and login like '" + bean.getLogin() + "%'");
 
-			
+			}
+			if (bean.getPassword() != null && bean.getPassword().length() > 0) {
+				sql.append(" and password like '" + bean.getPassword() + "%'");
+
+			}
+			if (bean.getId() > 0 && bean.getId() < nextPk()) {
+				sql.append(" and id like '" + bean.getId() + "%'");
+
+			}
+			if (bean.getDob() != null) {
+				Date d = new Date(bean.getDob().getTime());
+				sql.append(" and dob like '" + new java.sql.Date(bean.getDob().getTime()) + "' ");
+
+			}
+
+		}
+		if (pageSize > 0) {
+			pageNo = (pageNo - 1) * pageSize;
+			sql.append(" limit " + pageNo + "," + pageSize);
+
 		}
 
 		Connection conn = JDBCDataSource.getConnection();
@@ -258,7 +264,7 @@ public class UserModel {
 			list.add(bean);
 
 		}
-
+		conn.close();
 		return list;
 
 	}

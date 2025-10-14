@@ -11,38 +11,38 @@
 	<%@ include file="Header.jsp"%>
 
 	<%
-	String successMsg = (String) request.getAttribute("successMsg");
-	String errorMsg = (String) request.getAttribute("errorMsg");
-	UserBean bean = (UserBean) request.getAttribute("bean");
+		String successMsg = (String) request.getAttribute("successMsg");
+		String errorMsg = (String) request.getAttribute("errorMsg");
+		UserBean bean = (UserBean) request.getAttribute("bean");
 	%>
 
 	<div align="center">
 		<%
-		if (bean != null && bean.getId() > 0) {
+			if (bean != null && bean.getId() > 0) {
 		%>
 		<h3>Update User</h3>
 		<%
-		} else {
+			} else {
 		%>
 		<h3>Add User</h3>
 		<%
-		}
+			}
 		%>
 
 		<%
-		if (successMsg != null) {
+			if (successMsg != null) {
 		%>
 		<h3 style="color: green;"><%=successMsg%></h3>
 		<%
-		}
+			}
 		%>
 
 		<%
-		if (errorMsg != null) {
+			if (errorMsg != null) {
 		%>
 		<h3 style="color: red;"><%=errorMsg%></h3>
 		<%
-		}
+			}
 		%>
 
 		<form action="UserCtl" method="post">

@@ -2,6 +2,7 @@ package com.rays.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -23,9 +24,15 @@ public class UserListCtl extends HttpServlet {
 
 		UserModel model = new UserModel();
 		UserBean bean = new UserBean();
+		
+		int pageNo=1;
+		int pageSize=5;
 
 		try {
-			List list = model.search(bean);
+			List list = model.search(bean,pageNo,pageSize);
+			List nextList=model.search(bean, pageNo+1, pageSize);
+			request.setAttribute("nextList", nextList);
+			request.setAttribute("pageNo", pageNo);
 			request.setAttribute("list", list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,6 +50,9 @@ public class UserListCtl extends HttpServlet {
 		UserModel model = new UserModel();
 		UserBean bean=new UserBean();
 		String[] ids = request.getParameterValues("ids");
+		
+		int pageNo=1;
+		int pageSize=5;
 		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 
@@ -68,10 +78,31 @@ public class UserListCtl extends HttpServlet {
 			bean.setLastName(request.getParameter("lastName"));
 			bean.setLogin(request.getParameter("login"));
 			bean.setPassword(request.getParameter("password"));
+			try {
+				bean.setDob(sdf.parse("dob"));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
+		
+	
+		
+		if(op.equals("next")) {
+			pageNo=Integer.parseInt(request.getParameter("pageNo"));
+			pageNo++;
+		}
+		if(op.equals("previous")) {
+			pageNo=Integer.parseInt(request.getParameter("pageNo"));
+			pageNo--;
+		}
+		
 		try {
-			List list = model.search(bean);
+			List list = model.search(bean,pageNo,pageSize);
+			List nextList=model.search(bean, pageNo+1, pageSize);
+			request.setAttribute("nextList", nextList);
+			request.setAttribute("pageNo", pageNo);
 			request.setAttribute("list", list);
 		} catch (Exception e) {
 			e.printStackTrace();
