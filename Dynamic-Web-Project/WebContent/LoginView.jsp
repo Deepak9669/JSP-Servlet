@@ -10,7 +10,7 @@
 
 
 	<%
-		String errorMsg = (String) request.getAttribute("errorMsg");
+		String errorMsg = (String)request.getAttribute("errorMsg");
 		String successMsg = (String) request.getAttribute("successMsg");
 	%>
 	<%@ include file="Header.jsp"%>

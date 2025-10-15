@@ -38,7 +38,7 @@
 		<%
 			}
 		%>
-		<form action="UserListCtl" method="post">
+		<form action="UserListCtl.do" method="post">
 
 			<table>
 				<tr>
@@ -55,13 +55,6 @@
 					<td><input type="Date" name="dob" value=""></td>
 					<td><input type="submit" name="operation" value="search"></td>
 				</tr>
-
-
-
-
-
-
-
 
 			</table>
 
@@ -93,7 +86,7 @@
 					<td><%=bean.getLastName()%></td>
 					<td><%=bean.getLogin()%></td>
 					<td><%=bean.getDob()%></td>
-					<td><a href="UserCtl?id=<%=bean.getId()%>">edit</a></td>
+					<td><a href="UserCtl.do?id=<%=bean.getId()%>">edit</a></td>
 				</tr>
 				<%
 					}
@@ -110,7 +103,7 @@
 						value="next" <%=nextList.size() == 0 ? "disabled" : ""%>></td>
 				</tr>
 			</table>
-			<input type="text" name="pageNo" value="<%=pageNo%>">
+			<input type="hidden" name="pageNo" value="<%=pageNo%>">
 
 		</form>
 	</div>
