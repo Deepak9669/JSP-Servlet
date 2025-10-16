@@ -14,43 +14,59 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.rays.bean.UserBean;
 import com.rays.model.UserModel;
+import com.rays.util.DataValidator;
 
-
- 
 @WebServlet("/UserRegistrationCtl")
 public class UserRegistrationCtl extends HttpServlet {
-       
-   	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-   			throws ServletException, IOException {
-   		response.sendRedirect("UserRegistrationView.jsp");
+
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String op = request.getParameter("operation");
+		
+		if(op!=null) {
+			if (!DataValidator.signUpValidation(request)) {
+				RequestDispatcher rd = request.getRequestDispatcher("UserRegistrationView.jsp");
+				rd.forward(request, response);
+				return;
+				
+			}
+		}
+
+		super.service(request, response);
 	}
 
-		protected void doPost(HttpServletRequest request, HttpServletResponse response)
-				throws ServletException, IOException {
-			
-			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-			
-			UserBean bean=new UserBean();
-			UserModel model=new UserModel();
-			
-		String firstName=request.getParameter("firstName");
-		String lastName=request.getParameter("lastName");
-		String login=request.getParameter("login");
-		String password=request.getParameter("password");
-		String dob=request.getParameter("dob");
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.sendRedirect("UserRegistrationView.jsp");
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		UserBean bean = new UserBean();
+		UserModel model = new UserModel();
+
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String login = request.getParameter("login");
+		String password = request.getParameter("password");
+		String dob = request.getParameter("dob");
+
 		try {
-			
-		bean.setFirstName(firstName);
-		bean.setLastName(lastName);
-		bean.setLogin(login);
-		bean.setPassword(password);
-		bean.setDob(sdf.parse(dob));
-		
-		model.add(bean);
-		
-		request.setAttribute("successMsg", "User Registration Sucessfully");
-		
+
+			bean.setFirstName(firstName);
+			bean.setLastName(lastName);
+			bean.setLogin(login);
+			bean.setPassword(password);
+			bean.setDob(sdf.parse(dob));
+
+			model.add(bean);
+
+			request.setAttribute("successMsg", "User Registration Sucessfully");
+
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());
 
@@ -59,9 +75,6 @@ public class UserRegistrationCtl extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("UserRegistrationView.jsp");
 		rd.forward(request, response);
 
-		
-		}
-		
-		
+	}
 
 }

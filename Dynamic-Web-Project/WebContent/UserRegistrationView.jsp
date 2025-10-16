@@ -38,27 +38,33 @@
 
 					<th>First Name</th>
 					<td><input type="text" name="firstName" value=""
-						placeholder="enter first name"></td>
+						placeholder="enter First name"><span style="color: red">
+							<%=request.getAttribute("firstName") != null ? request.getAttribute("firstName") : ""%></span></td>
 				</tr>
 				<tr>
 					<th>Last Name</th>
 					<td><input type="text" name="lastName" value=""
-						placeholder="enter last name"></td>
+						placeholder="enter last name"><span style="color: red">
+							<%=request.getAttribute("lastName") != null ? request.getAttribute("lastName") : ""%></span></td>
 				</tr>
 				<tr>
 					<th>Login</th>
 					<td><input type="email" name="login" value=""
-						placeholder="enter your login"></td>
+						placeholder="enter your login"><span style="color:red">
+						<%=request.getAttribute("login") != null ? request.getAttribute("login") : ""%></span></td>
 				</tr>
 				<tr>
 					<th>Password</th>
 					<td><input type="password" name="password" value=""
-						placeholder="enter your password"></td>
+
+						placeholder="enter your password"><span style="color:red">
+						<%=request.getAttribute("password") != null ? request.getAttribute("password") : ""%></span></td>
 				</tr>
 				<tr>
 					<th>Dob</th>
 					<td><input type="date" name="dob" value=""
-						placeholder="enter your dob"></td>
+						placeholder="enter your dob"><span style="color:red">
+						<%=request.getAttribute("dob") != null ? request.getAttribute("dob") : ""%></span></td>
 
 				</tr>
 				<tr>

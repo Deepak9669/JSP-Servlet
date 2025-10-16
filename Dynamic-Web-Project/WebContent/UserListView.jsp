@@ -95,10 +95,19 @@
 
 			<table width="100%">
 				<tr>
+
+					<!-- Previous Button -->
+
 					<th></th>
 					<td><input type="submit" name="operation" value="previous"
 						<%=pageNo == 1 ? "disabled" : ""%>></td>
+
+					<!-- Delete Button -->
+
 					<td><input type="submit" name="operation" value="delete"></td>
+
+					<!-- Delete Button -->
+
 					<td align="right"><input type="submit" name="operation"
 						value="next" <%=nextList.size() == 0 ? "disabled" : ""%>></td>
 				</tr>
