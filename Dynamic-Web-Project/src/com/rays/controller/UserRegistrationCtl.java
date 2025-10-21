@@ -23,13 +23,13 @@ public class UserRegistrationCtl extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String op = request.getParameter("operation");
-		
-		if(op!=null) {
+
+		if (op != null) {
 			if (!DataValidator.signUpValidation(request)) {
 				RequestDispatcher rd = request.getRequestDispatcher("UserRegistrationView.jsp");
 				rd.forward(request, response);
 				return;
-				
+
 			}
 		}
 
