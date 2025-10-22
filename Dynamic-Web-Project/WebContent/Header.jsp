@@ -16,7 +16,7 @@
 	<%
 		if (user != null) {
 	%>
-	<h3><%="Hi, " + user.getFirstName() + " " + user.getLastName()%></h3>
+	<h3><%="Hi, " + user.getFirstName() + "  " + user.getLastName()%></h3>
 	<%
 		} else {
 	%>
