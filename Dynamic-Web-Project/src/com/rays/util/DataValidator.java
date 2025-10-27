@@ -1,4 +1,4 @@
-package com.rays.util;
+ package com.rays.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
