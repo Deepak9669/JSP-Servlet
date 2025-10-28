@@ -265,7 +265,7 @@ public class UserModel {
 
 		}
 		conn.close();
-		return list;
+		return null;
 
 	}
 
