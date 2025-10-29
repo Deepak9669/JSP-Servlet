@@ -1,3 +1,4 @@
+<%@page import="com.rays.bean.EmployeeBean"%>
 <%@page import="com.rays.bean.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -33,6 +34,8 @@
 	<a href="MyProfileCtl">My Profile</a> |
 	<a href="UserCtl.do">Add User</a> |
 	<a href="UserListCtl.do">User List</a>|
+	<a href="EmployeeAddCtl.do">Add Employee</a> |
+	<a href="EmployeeListCtl.do">Employee List</a>|
 	<a href="ChangePasswordCtl">Change password</a> |
 	<a href="LoginCtl?operation=logout">Logout</a>
 	<%
