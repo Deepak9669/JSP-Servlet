@@ -74,14 +74,14 @@ public class EmployeeModel {
 
 		Connection conn = JDBCDataSource.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(
-				"update employe1 set employee = ?, salary = ?, status = ? where id = ?");
+				"update employe1 set employee = ?, salary = ?, status = ?,login=?,password=? where id = ?");
 
 		pstmt.setString(1, bean.getEmployee());
 		pstmt.setString(2,bean.getSalary());
 		pstmt.setString(3,bean.getStatus());
-		pstmt.setInt(4, bean.getId());
-		pstmt.setString(5, bean.getLogin());
-		pstmt.setString(6, bean.getPassword());
+		pstmt.setString(4, bean.getLogin());
+		pstmt.setString(5, bean.getPassword());
+		pstmt.setInt(6, bean.getId());
 
 		int i = pstmt.executeUpdate();
 		System.out.println("data updated successfully: " + i);

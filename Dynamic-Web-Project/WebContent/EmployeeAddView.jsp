@@ -77,7 +77,8 @@
 				<tr>
 					<th>Status</th>
 					<td><input type="text" name="status"
-						value="<%=bean != null ? bean.getStatus() : ""%>"></td>
+						value="<%=bean != null ? bean.getStatus() : ""%>"
+						placeholder="enter your status"></td>
 				</tr>
 				<tr>
 					<th></th>

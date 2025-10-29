@@ -21,6 +21,23 @@ import com.rays.util.DataValidator;
 public class EmployeeAddCtl extends HttpServlet {
 	
 
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String op = request.getParameter("operation");
+
+		if (op != null) {
+			if (!DataValidator.signUpValidation(request)) {
+				RequestDispatcher rd = request.getRequestDispatcher("UserRegistrationView.jsp");
+				rd.forward(request, response);
+				return;
+
+			}
+		}
+
+		super.service(request, response);
+	}
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

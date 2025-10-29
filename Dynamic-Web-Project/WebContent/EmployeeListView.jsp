@@ -88,7 +88,7 @@
 					<td><%=bean.getLogin()%></td>
 					
 					
-					<td><a href="EmployeeListCtl.do?id=<%=bean.getId()%>">edit</a></td>
+					<td><a href="EmployeeAddCtl.do?id=<%=bean.getId()%>">edit</a></td>
 				</tr>
 				<%
 					}
