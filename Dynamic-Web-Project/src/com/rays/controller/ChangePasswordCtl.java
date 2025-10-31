@@ -35,6 +35,7 @@ public class ChangePasswordCtl extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
+		System.out.println();
 
 		if (user == null) {
 			request.setAttribute("errorMsg", "Session expired. Please login again.");
@@ -48,8 +49,10 @@ public class ChangePasswordCtl extends HttpServlet {
 
 			try {
 				UserModel model = new UserModel();
-
-				model.changePassword(user.getLogin(), oldPassword, newPassword);
+				
+				System.out.println(user.getLogin());
+				model.changePassword(oldPassword, newPassword, user.getLogin());
+				System.out.println(user.getLogin());
 
 				request.setAttribute("successMsg", "Password changed successfully");
 

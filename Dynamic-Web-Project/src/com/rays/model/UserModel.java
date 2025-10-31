@@ -157,6 +157,7 @@ public class UserModel {
 	public void changePassword(String oldPassword, String newPassword, String login) throws Exception {
 
 		UserBean existBean = findByLogin(login);
+		System.out.println(existBean);
 
 		if (existBean == null) {
 			throw new RecordNotFoundException("User not found");
