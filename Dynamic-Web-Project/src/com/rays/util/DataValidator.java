@@ -12,10 +12,26 @@ public class DataValidator {
 		
 		boolean isValid=true;
 		
-		if(request.getParameter("firstName")=="") {
+		if (request.getParameter("employee") == null || request.getParameter("employee").trim().isEmpty()) {
+		    request.setAttribute("employee", "Employee name is required");
+		    isValid = false;
+		} else if (!(request.getParameter("employee").length() >= 3
+		        && request.getParameter("employee").length() <= 12)) {
+		    request.setAttribute("employee", "Your employee name must be between 3 and 12 characters long.");
+		    isValid = false;
+		}
+
+
+		if(request.getParameter("firstName")==null) {
 			request.setAttribute("firstName", "firstName is required");
 			 isValid=false;
+		} else if (!(request.getParameter("firstName").length() >= 3
+		        && request.getParameter("firstName").length() <= 12)) {
+		    request.setAttribute("firstName", "Your firstName name must be between 3 and 12 characters long.");
+		    isValid = false;
 		}
+
+			
 		if(request.getParameter("lastName")=="") {
 			request.setAttribute("lastName", "lastName is required");
 			 isValid=false;
