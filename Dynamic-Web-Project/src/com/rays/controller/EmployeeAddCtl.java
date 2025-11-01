@@ -27,7 +27,7 @@ public class EmployeeAddCtl extends HttpServlet {
 		String op = request.getParameter("operation");
 
 		if (op != null) {
-			if (!DataValidator.signUpValidation(request)) {
+			if (!DataValidator.employeeValidation(request)) {
 				RequestDispatcher rd = request.getRequestDispatcher("EmployeeAddView.jsp");
 				rd.forward(request, response);
 				return;
